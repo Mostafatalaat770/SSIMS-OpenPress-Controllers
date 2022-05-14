@@ -14,6 +14,10 @@ export const Layout = () => {
 			name: "Proof Request",
 			path: "/proof-request",
 		},
+		{
+			name: "Massenger",
+			path: "/massenger",
+		},
 	];
 	return (
 		<div>
