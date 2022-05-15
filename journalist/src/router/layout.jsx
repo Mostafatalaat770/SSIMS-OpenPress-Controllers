@@ -16,8 +16,8 @@ export const Layout = () => {
 			path: "/proof-request",
 		},
 		{
-			name: "Massenger",
-			path: "/massenger",
+			name: "Messenger",
+			path: "/messenger",
 		},
 	];
 	return (
