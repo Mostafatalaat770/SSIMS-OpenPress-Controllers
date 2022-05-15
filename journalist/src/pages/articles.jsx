@@ -1,18 +1,22 @@
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import articlesData from "../data/articles.json";
 export const Articles = () => {
 	const articles = articlesData.map((article) => (
-		<div key={article.id}>
-			<h1>
-				<Link to={`${article.id}`}>{article.title}</Link>
-			</h1>
-			<p>{article.content}</p>
-		</div>
+		<Card key={article.id}>
+			<Card.Body>
+				<Card.Title>{article.title}</Card.Title>
+				<Card.Text>{article.content}</Card.Text>
+				<Button variant="primary">
+					<Link to={`${article.id}`}>Read More...</Link>
+				</Button>
+			</Card.Body>
+		</Card>
 	));
 	return (
 		<div>
 			<h1>Articles</h1>
-			<div>{articles}</div>
+			<div className="articles">{articles}</div>
 		</div>
 	);
 };
