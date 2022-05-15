@@ -22,7 +22,7 @@ export const Home = () => {
 		<div>
 			<h1>Home</h1>
 			<p>In order to join our network, please scan this QR code</p>
-			{<QRCodeSVG value={JSON.stringify(connectionJson)} />}
+			{<QRCodeSVG value={JSON.stringify(connectionJson)} size={256} />}
 		</div>
 	);
 };
