@@ -6,6 +6,8 @@ import { Home } from "../pages/home";
 import { ProofRequest } from "../pages/proofRequest";
 import { Layout } from "./layout";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export const AppRouter = () => {
 	return (
 		<Routes>

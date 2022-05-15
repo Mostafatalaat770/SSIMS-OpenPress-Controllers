@@ -1,3 +1,4 @@
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 export const Layout = () => {
@@ -23,14 +24,23 @@ export const Layout = () => {
 		<div>
 			<header>
 				<div>
-					<ul>
-						{navElements.map((e) => (
-							<Link key={e.path} to={e.path}>
-								{e.name}
-							</Link>
-						))}
-					</ul>
+					<ul></ul>
 				</div>
+				<Navbar bg="light" expand="lg">
+					<Container>
+						<Navbar.Brand href="#home">Publisher</Navbar.Brand>
+						<Navbar.Toggle aria-controls="basic-navbar-nav" />
+						<Navbar.Collapse id="basic-navbar-nav">
+							<Nav className="me-auto">
+								{navElements.map((e) => (
+									<Nav.Link as={Link} key={e.path} to={e.path}>
+										{e.name}
+									</Nav.Link>
+								))}
+							</Nav>
+						</Navbar.Collapse>
+					</Container>
+				</Navbar>
 			</header>
 			<Outlet />
 		</div>
