@@ -6,7 +6,12 @@ export const Articles = () => {
 		<Card key={article.id}>
 			<Card.Body>
 				<Card.Title>{article.title}</Card.Title>
-				<Card.Text>{article.content}</Card.Text>
+
+				<Card.Text>
+					{article.content.substring(0, 255)}
+					{article.content.length > 255 && "..."}
+				</Card.Text>
+
 				<Button variant="primary">
 					<Link to={`${article.id}`}>Read More...</Link>
 				</Button>
