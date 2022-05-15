@@ -42,7 +42,9 @@ export const Layout = () => {
 					</Container>
 				</Navbar>
 			</header>
-			<Outlet />
+			<Container>
+				<Outlet />
+			</Container>
 		</div>
 	);
 };
