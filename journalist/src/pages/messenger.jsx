@@ -1,20 +1,53 @@
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { ChatContainer } from "../Components/ChatContainer";
+import { ChatItem } from "../Components/ChatItem";
+
+const chatData = [
+	{
+		label: "Alice",
+		did: "did:sov:2wJ5mHreBBH2a9LQp2ytHoeZt4NqPypQzfvfvb",
+	},
+	{
+		label: "Bob",
+		did: "did:sov:s2S1aAWeBBH2a9LQp2ytHoeZt4NqPypQzfvfvb",
+	},
+	{
+		label: "Charlie",
+		did: "did:sov:3wJ5mHreBBH2a9LQp2ytHoeZt4NqPypQzfvfvb",
+	},
+];
+
 export const Messenger = () => {
+	const [chats, setChats] = useState([]);
+	const [activeChat, setActiveChat] = useState(null);
+
+	useEffect(() => {
+		// TODO: fetch active connections
+		setChats(chatData);
+	}, []);
+	const chatItemList = chatData.map((chat, index) => (
+		<div
+			key={chat.did}
+			onClick={() => setActiveChat(index)}
+			style={{ cursor: "pointer" }}
+		>
+			<ChatItem label={chat.label} did={chat.did} />
+		</div>
+	));
+	const chatContainerList = chats.map(
+		(chat, index) =>
+			activeChat === index && (
+				<ChatContainer label={chat.label} did={chat.did} />
+			)
+	);
 	return (
-		<>
-			<>
-				<div>
-					<h1>users</h1>
-				</div>
-				<div>
-					<h1>text</h1>
-				</div>
-			</>
-			<div>
-				<form name="message" action="">
-					<input name="usermsg" type="text" id="usermsg" />
-					<input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-				</form>
-			</div>
-		</>
+		<Container>
+			<h1>Messenger</h1>
+			<Row>
+				<Col md={4}>{chatItemList}</Col>
+				<Col md={8}>{chatContainerList}</Col>
+			</Row>
+		</Container>
 	);
 };
