@@ -1,6 +1,10 @@
 import { Card } from "react-bootstrap";
-
-export const ChatItem = ({ label, did }) => {
+import { FC } from "../types";
+export interface ChatItemProps {
+	label: string;
+	did: string;
+}
+export const ChatItem: FC<ChatItemProps> = ({ label, did }) => {
 	return (
 		<Card>
 			<Card.Body>

@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button, Card, FormControl, InputGroup } from "react-bootstrap";
-
-export const ChatContainer = ({ label, did }) => {
-	const [message, setMessage] = useState(null);
-	const [messages, setMessages] = useState([]);
+import { FC } from "../types";
+export interface ChatContainerProps {
+	label: string;
+	did: string;
+}
+export const ChatContainer: FC<ChatContainerProps> = ({ label, did }) => {
+	const [message, setMessage] = useState<string>(``);
+	const [messages, setMessages] = useState<string[]>([]);
 	const onSend = () => {
 		setMessages([...messages, message]);
 		setMessage("");
@@ -15,8 +19,8 @@ export const ChatContainer = ({ label, did }) => {
 				<Card.Text>{did}</Card.Text>
 			</Card.Header>
 			<Card.Body>
-				{messages.map((message) => (
-					<Card.Text key={message}>{message}</Card.Text>
+				{messages.map((message, index) => (
+					<Card.Text key={index}>{message}</Card.Text>
 				))}
 			</Card.Body>
 			<Card.Footer>

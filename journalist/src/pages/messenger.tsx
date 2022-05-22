@@ -19,8 +19,13 @@ const chatData = [
 ];
 
 export const Messenger = () => {
-	const [chats, setChats] = useState([]);
-	const [activeChat, setActiveChat] = useState(null);
+	const [chats, setChats] = useState<
+		{
+			label: string;
+			did: string;
+		}[]
+	>([]);
+	const [activeChat, setActiveChat] = useState<number | undefined>(undefined);
 
 	useEffect(() => {
 		// TODO: fetch active connections
