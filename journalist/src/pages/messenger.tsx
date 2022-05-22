@@ -43,7 +43,7 @@ export const Messenger = () => {
 	const chatContainerList = chats.map(
 		(chat, index) =>
 			activeChat === index && (
-				<ChatContainer label={chat.label} did={chat.did} />
+				<ChatContainer key={index} label={chat.label} did={chat.did} />
 			)
 	);
 	return (
