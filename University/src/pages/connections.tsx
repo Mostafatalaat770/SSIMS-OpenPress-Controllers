@@ -1,23 +1,23 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { FC } from "../types";
 
 const navElements = [
 	{
 		name: "Active",
-		path: "/active",
+		path: "active",
 	},
 	{
 		name: "Pending",
-		path: "/pending",
+		path: "pending",
 	},
 	{
 		name: "New",
-		path: "/new",
+		path: "new",
 	},
 	{
 		name: "Accept",
-		path: "/accept",
+		path: "accept",
 	},
 ];
 
@@ -38,6 +38,9 @@ export const Connections: FC = () => {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+			<Container>
+				<Outlet />
+			</Container>
 		</div>
 	);
 };
