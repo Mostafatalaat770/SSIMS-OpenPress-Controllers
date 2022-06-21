@@ -8,6 +8,10 @@ export const Layout = () => {
 			path: "/",
 		},
 		{
+			name: "Connections",
+			path: "/connections",
+		},
+		{
 			name: "Articles",
 			path: "/articles",
 		},
