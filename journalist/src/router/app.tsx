@@ -13,10 +13,12 @@ export const AppRouter = () => {
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Home />} />
-				<Route path="articles" element={<Articles />} />
-				<Route path="/articles/:id" element={<Article />} />
-				<Route path="/proof-request" element={<ProofRequest />} />
-				<Route path="/messenger" element={<Messenger />} />
+				<Route path="articles">
+					<Route index element={<Articles />} />
+					<Route path=":id" element={<Article />} />
+				</Route>
+				<Route path="proof-request" element={<ProofRequest />} />
+				<Route path="messenger" element={<Messenger />} />
 			</Route>
 		</Routes>
 	);
