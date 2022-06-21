@@ -11,6 +11,10 @@ export const Layout = () => {
 			name: "Connections",
 			path: "/connections",
 		},
+		{
+			name: "Credentials",
+			path: "/credentials",
+		},
 	];
 	return (
 		<div>
