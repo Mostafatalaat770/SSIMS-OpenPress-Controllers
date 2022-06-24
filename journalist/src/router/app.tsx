@@ -12,6 +12,7 @@ import { Active } from "../pages/connections/active";
 import { Pending } from "../pages/connections/pending";
 import { NewConnection } from "../pages/connections/newConnection";
 import { AcceptConnection } from "../pages/connections/acceptConnection";
+import { Credentials } from "../pages/credentials";
 
 export const AppRouter = () => {
 	return (
@@ -28,7 +29,8 @@ export const AppRouter = () => {
 					<Route path="pending" element={<Pending />} />
 					<Route path="new" element={<NewConnection />} />
 					<Route path="accept" element={<AcceptConnection />} />
-				</Route>{" "}
+				</Route>
+				<Route path="credentials" element={<Credentials />} />
 				<Route path="proof-request" element={<ProofRequest />} />
 				<Route path="messenger" element={<Messenger />} />
 			</Route>

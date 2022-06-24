@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 export const Layout = () => {
+	const [activeTab, setActiveTab] = useState(0);
 	const navElements = [
 		{
 			name: "Home",
@@ -14,6 +16,10 @@ export const Layout = () => {
 		{
 			name: "Articles",
 			path: "/articles",
+		},
+		{
+			name: "Credentials",
+			path: "/credentials",
 		},
 		{
 			name: "Proof Request",
@@ -36,8 +42,14 @@ export const Layout = () => {
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">
-								{navElements.map((e) => (
-									<Nav.Link as={Link} key={e.path} to={e.path}>
+								{navElements.map((e, index) => (
+									<Nav.Link
+										as={Link}
+										key={e.path}
+										to={e.path}
+										active={index === activeTab}
+										onClick={() => setActiveTab(index)}
+									>
 										{e.name}
 									</Nav.Link>
 								))}
