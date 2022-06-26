@@ -4,6 +4,9 @@ import { Alert, Container, Form } from "react-bootstrap";
 export const AddArticle = () => {
 	const [content, setContent] = useState<string>("{}");
 	const [metadata, setMetadata] = useState<string>("{}");
+	const [selectedConnectionId, setSelectedConnectionId] = useState("");
+	const [articleDefId, setArticleDefId] = useState("");
+	const [universityDefId, setUniversityDefId] = useState("");
 
 	const [contentError, setContentError] = useState<string | null>(null);
 	const [metadataError, setMetadataError] = useState<string | null>(null);
@@ -36,15 +39,26 @@ export const AddArticle = () => {
 			<Form>
 				<Form.Group>
 					<Form.Label>Connection ID</Form.Label>
-					<Form.Control as="select">
+					<Form.Control
+						as="select"
+						onChange={(e) => setSelectedConnectionId(e.currentTarget.value)}
+					>
 						<option selected disabled value="">
 							Select a Connection
 						</option>
 					</Form.Control>
 					<Form.Label>Article Credential Definition ID</Form.Label>
-					<Form.Control as="input" />
+					<Form.Control
+						as="input"
+						value={articleDefId}
+						onChange={(e) => setArticleDefId(e.currentTarget.value)}
+					/>
 					<Form.Label>University Credential Definition ID</Form.Label>
-					<Form.Control as="input" />
+					<Form.Control
+						as="input"
+						value={universityDefId}
+						onChange={(e) => setUniversityDefId(e.currentTarget.value)}
+					/>
 				</Form.Group>
 				<Form.Group>
 					<Form.Label>Content</Form.Label>
