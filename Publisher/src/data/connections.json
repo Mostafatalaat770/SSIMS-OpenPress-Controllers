@@ -1,0 +1,55 @@
+{
+	"connections": [
+		{
+			"invitation_mode": "once",
+			"their_label": "Alice Agent",
+			"updated_at": "2022-06-18 16:10:50.352496Z",
+			"routing_state": "none",
+			"connection_id": "33f93ae3-2dc5-40ef-9cee-91f7ff848cf6",
+			"initiator": "self",
+			"created_at": "2022-06-18 16:10:26.291152Z",
+			"their_did": "CoAKPoDdMXXu3V93MXgWJw",
+			"invitation_key": "B9HnAQsQhSNrgAcfAjwpGazJoh4URHw3K45iD8c8Z7Q2",
+			"state": "active",
+			"accept": "auto",
+			"my_did": "8HmmUSphZnVZJ5Pu3KK7aJ"
+		},
+		{
+			"invitation_mode": "once",
+			"their_label": "Alice Agent",
+			"updated_at": "2022-06-18 16:11:15.779287Z",
+			"routing_state": "none",
+			"connection_id": "46f27922-7b36-4d12-8446-514e99f06bcc",
+			"initiator": "external",
+			"created_at": "2022-06-18 16:11:15.358478Z",
+			"their_did": "DDtYUrJES2tta3JTEo2bo9",
+			"request_id": "b8cff8df-735c-46c6-85eb-8049ebb348bb",
+			"invitation_key": "FPcXFhvvEALtg9nMME9yB4rU5yambQN493rW2bRU4Lcs",
+			"state": "active",
+			"accept": "auto",
+			"my_did": "NaeZnB87seViMTZihCEKoo"
+		},
+		{
+			"invitation_mode": "once",
+			"updated_at": "2022-06-18 14:55:56.421836Z",
+			"routing_state": "none",
+			"connection_id": "83b1c5f0-13e1-48e9-99b9-7409d51ba21c",
+			"initiator": "self",
+			"created_at": "2022-06-18 14:55:56.421836Z",
+			"invitation_key": "EgB72Kmy2Tqq5t3THCPQiPAw4j3DRxftXr4SqiPij38R",
+			"state": "invitation",
+			"accept": "auto"
+		},
+		{
+			"invitation_mode": "once",
+			"updated_at": "2022-06-18 16:10:59.038511Z",
+			"routing_state": "none",
+			"connection_id": "a49af08b-64ae-4ce1-a206-eecdc924c3af",
+			"initiator": "self",
+			"created_at": "2022-06-18 16:10:59.038511Z",
+			"invitation_key": "FF6wEQKodKDpPUos5y1sj5MnhknviE4CwMn1yGVBuQZ7",
+			"state": "invitation",
+			"accept": "auto"
+		}
+	]
+}
