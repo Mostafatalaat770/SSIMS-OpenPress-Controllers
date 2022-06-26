@@ -10,6 +10,7 @@ import { Connections } from "../pages/connections";
 import { Active } from "../pages/connections/active";
 
 import { Credentials } from "../pages/credentials";
+import { AddArticle } from "../pages/addArticle";
 
 export const AppRouter = () => {
 	return (
@@ -20,6 +21,7 @@ export const AppRouter = () => {
 					<Route index element={<Articles />} />
 					<Route path=":id" element={<Article />} />
 				</Route>
+				<Route path="add-article" element={<AddArticle />} />
 				<Route path="connections" element={<Connections />}>
 					<Route index element={<Active />} />
 				</Route>

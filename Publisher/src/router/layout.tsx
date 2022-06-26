@@ -18,6 +18,10 @@ export const Layout = () => {
 			path: "/articles",
 		},
 		{
+			name: "Add Article",
+			path: "/add-article",
+		},
+		{
 			name: "Credentials",
 			path: "/credentials",
 		},
