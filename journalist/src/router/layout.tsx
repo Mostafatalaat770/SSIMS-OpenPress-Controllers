@@ -14,20 +14,8 @@ export const Layout = () => {
 			path: "/connections",
 		},
 		{
-			name: "Articles",
-			path: "/articles",
-		},
-		{
 			name: "Credentials",
 			path: "/credentials",
-		},
-		{
-			name: "Proof Request",
-			path: "/proof-request",
-		},
-		{
-			name: "Messenger",
-			path: "/messenger",
 		},
 	];
 	return (
