@@ -1,0 +1,45 @@
+{
+	"connection_id": "<Enter a valid Connection ID>",
+	"proof_request": {
+		"name": "Proof of Education",
+		"version": "1.0",
+		"requested_attributes": {
+			"name": {
+				"name": "name",
+				"restrictions": [
+					{
+						"cred_def_id": "<Enter a valid Credential Definition ID>"
+					}
+				]
+			},
+			"date": {
+				"name": "date",
+				"restrictions": [
+					{
+						"cred_def_id": "<Enter a valid Credential Definition ID>"
+					}
+				]
+			},
+			"degree": {
+				"name": "degree",
+				"restrictions": [
+					{
+						"cred_def_id": "<Enter a valid Credential Definition ID>"
+					}
+				]
+			}
+		},
+		"requested_predicates": {
+			"age": {
+				"name": "age",
+				"p_type": ">=",
+				"p_value": 18,
+				"restrictions": [
+					{
+						"cred_def_id": "<Enter a valid Credential Definition ID>"
+					}
+				]
+			}
+		}
+	}
+}
