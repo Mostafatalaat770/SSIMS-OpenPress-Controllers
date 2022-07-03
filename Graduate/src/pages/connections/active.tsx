@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { CardGroup, Container } from "react-bootstrap";
 import { ConnectionCard } from "./ConnectionCard";
-import connectionData from "../../data/connections.json";
 import { IConnection } from "./types";
-
+import agent from "../../services/agent";
 export const Active = () => {
 	const [connections, setConnections] = useState<IConnection[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			// TODO: fetch data from Aries agent where state === 'active;
-			setConnections(
-				connectionData.connections.filter((c) => c.state === "active")
+			const response = await agent.getConnections();
+			const activeConnections = response.data.results.filter(
+				(connection: IConnection) => connection.state === "active"
 			);
+			setConnections(activeConnections);
 		};
 		fetchData();
 	}, []);

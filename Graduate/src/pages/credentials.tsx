@@ -1,39 +1,16 @@
 import { useEffect, useState } from "react";
 import { CardGroup, Container } from "react-bootstrap";
 import { CredentialCard } from "../Components/CrednetialCard";
-const creds = [
-	{
-		referent: "59d493d0-7f8d-46cb-ab7f-86e28fd601b6",
-		attrs: {
-			name: "Alice Smith",
-			degree: "Maths",
-			date: "2020-01-01",
-			age: "24",
-		},
-		schema_id: "VvHsnLRLwrgPrKWW6GYifH:2:degree schema:25.53.85",
-		cred_def_id: "VvHsnLRLwrgPrKWW6GYifH:3:CL:139510:default",
-		rev_reg_id: null,
-		cred_rev_id: null,
-	},
-	{
-		referent: "59d493d0-7f8d-46cb-ab7f-86e28fd601b6",
-		attrs: {
-			name: "Alice Smith",
-			degree: "Maths",
-			date: "2020-01-01",
-			age: "24",
-		},
-		schema_id: "VvHsnLRLwrgPrKWW6GYifH:2:degree schema:25.53.85",
-		cred_def_id: "VvHsnLRLwrgPrKWW6GYifH:3:CL:139510:default",
-		rev_reg_id: null,
-		cred_rev_id: null,
-	},
-];
+import agent from "../services/agent";
+
 export const Credentials = () => {
 	const [credentials, setCredntials] = useState<any | null>(null);
 	useEffect(() => {
-		// TODO: fetch credentials from aires agent
-		setCredntials(creds);
+		const fetchData = async () => {
+			const response = await agent.getCredentials();
+			setCredntials(response.data.results);
+		};
+		fetchData();
 	}, []);
 	if (!credentials) return <div>loading...</div>;
 	return (
