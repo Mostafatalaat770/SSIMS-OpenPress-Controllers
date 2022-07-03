@@ -1,28 +1,47 @@
 import { QRCodeSVG } from "qrcode.react";
+import { useEffect, useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
+import agent from "../services/agent";
 
 export const Home = () => {
-	const connectionJson = {
-		connection_id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-		invitation: {
-			"@type":
-				"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/my-family/1.0/my-message-type",
-			serviceEndpoint: "http://192.168.56.101:8020",
-			did: "WgWxqztrNooG92RXvxSTWv",
-			recipientKeys: ["H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"],
-			routingKeys: ["H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"],
-			label: "Bob",
-			"@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-			imageUrl: "http://192.168.56.101/img/logo.jpg",
-		},
-		invitation_url:
-			"http://192.168.56.101:8020/invite?c_i=eyJAdHlwZSI6Li4ufQ==",
+	const [connection, setConnection] = useState<any>(null);
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await agent.createInvitation();
+			setConnection(response.data);
+		};
+		fetchData();
+	}, []);
+	const copy = async () => {
+		await navigator.clipboard.writeText(connection.invitation_url);
 	};
-
+	if (!connection) {
+		return <div>loading...</div>;
+	}
 	return (
-		<div>
+		<div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
 			<h1>Home</h1>
-			<p>In order to join our network, please scan this QR code</p>
-			{<QRCodeSVG value={JSON.stringify(connectionJson)} size={256} />}
+			<div>In order to join our network, please scan this QR code</div>
+			{<QRCodeSVG value={JSON.stringify(connection.invitation)} size={256} />}
+			<Form>
+				<Form.Group>
+					<Form.Label>Or you copy the invitation_url: </Form.Label>
+					<InputGroup>
+						<Form.Control
+							type="text"
+							disabled
+							value={connection.invitation_url}
+						/>
+						<button
+							className="btn btn-outline-secondary"
+							type="button"
+							onClick={copy}
+						>
+							<i className="fas fa-clipboard"></i>
+						</button>
+					</InputGroup>
+				</Form.Group>
+			</Form>
 		</div>
 	);
 };

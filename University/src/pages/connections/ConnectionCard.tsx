@@ -1,4 +1,5 @@
 import { Card, CloseButton } from "react-bootstrap";
+import agent from "../../services/agent";
 import { IConnection } from "./types";
 interface ConnectionCardProps {
 	connection: IConnection;
@@ -13,6 +14,10 @@ export const ConnectionCard = ({ connection }: ConnectionCardProps) => {
 		their_label,
 		updated_at,
 	} = connection;
+	const onClose = async () => {
+		await agent.removeConnection(connection_id!);
+		window.location.reload();
+	};
 	return (
 		<Card>
 			<Card.Body>
@@ -20,7 +25,7 @@ export const ConnectionCard = ({ connection }: ConnectionCardProps) => {
 					style={{ display: "flex", justifyContent: "space-between" }}
 				>
 					<small className="text-muted">Created {created_at}</small>
-					<CloseButton />
+					<CloseButton onClick={onClose} />
 				</Card.Title>
 				{state === "active" || state === "request" ? (
 					<>

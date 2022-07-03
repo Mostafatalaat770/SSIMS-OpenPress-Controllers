@@ -1,5 +1,8 @@
+import { log } from "console";
 import { useEffect, useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import agent from "../services/agent";
 import { IConnection } from "./connections/types";
 
 const defaultCredential = {
@@ -35,21 +38,38 @@ export const Credentials = () => {
 
 	const [error, setError] = useState<any>(null);
 
+	const navigate = useNavigate();
 	useEffect(() => {
-		//TODO: fetch connections, credential definitions and schemas from aires agent
-
-		//TODO: set connections, credential definitions and schemas to state
-
-		//TODO: get attrs from schema and set to state
-		const data: string[] = ["name", "email", "phone", "age"];
-
-		setInputData(
-			data.reduce((acc, curr) => {
-				acc[curr] = "";
-				return acc;
-			}, {} as { [curr: string]: string })
-		);
+		const fetchData = async () => {
+			const response = await agent.getConnections();
+			const activeConnections = response.data.results.filter(
+				(connection: IConnection) => connection.state === "active"
+			);
+			setConnections(activeConnections);
+			const credentialDefinitionIds = await agent.getCredentialDefinitions();
+			setCredentialDefinitionIds(
+				credentialDefinitionIds.data.credential_definition_ids
+			);
+			const schemaIds = await agent.getSchemas();
+			setSchemaIds(schemaIds.data.schema_ids);
+		};
+		fetchData();
 	}, []);
+	useEffect(() => {
+		const fetchData = async () => {
+			if (selectedSchemaId) {
+				const schema = await agent.getSchema(selectedSchemaId);
+				const attrs: string[] = schema.data.schema_json.attrNames;
+				setInputData(
+					attrs.reduce((acc, curr) => {
+						acc[curr] = "";
+						return acc;
+					}, {} as { [curr: string]: string })
+				);
+			}
+		};
+		fetchData();
+	}, [selectedSchemaId]);
 
 	const handleValidSubmit = async () => {
 		const credential = defaultCredential;
@@ -69,7 +89,7 @@ export const Credentials = () => {
 		credential["issuer_did"] = credDefArr[0];
 		credential["cred_def_id"] = credentialDefinitionId;
 
-		credential["connection_id"] = connectionId;
+		credential["connection_id"] = connectionId.split(":")[1];
 
 		credential["credential_proposal"]["attributes"] = Object.entries(
 			inputData
@@ -79,8 +99,11 @@ export const Credentials = () => {
 				value,
 			};
 		});
-
-		// TODO: call the API to issue the credential and redirect to connections page
+		const response = await agent.sendCredential(credential);
+		if (response.status !== 200) {
+			setError(response.data);
+		}
+		navigate("/connections");
 	};
 	return (
 		<Container>
