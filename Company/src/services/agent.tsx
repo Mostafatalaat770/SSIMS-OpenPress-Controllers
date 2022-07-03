@@ -1,5 +1,5 @@
 import axios from "axios";
-const hostname = process.env.ACME_AGENT_HOST || "localhost";
+const hostname = process.env.REACT_APP_COMPANY_AGENT_HOST || "localhost";
 const port = 8021;
 const baseUrl = hostname;
 console.log("Agent is running on: ", `http://${hostname}:${port}`);

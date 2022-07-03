@@ -1,10 +1,8 @@
 import axios from "axios";
-const hostname =
-	process.env.ACME_AGENT_HOST ||
-	"http://ip172-18-0-38-cb02v9ujd6ng0099m680-8031.direct.labs.play-with-docker.com";
+const hostname = process.env.REACT_APP_GRADUATE_AGENT_HOST || "localhost";
 const port = 8021;
 const baseUrl = hostname;
-console.log("Agent is running on: ", `${baseUrl}`);
+console.log("Agent is running on: ", `http://${hostname}:${port}`);
 
 export const getConnections = () => {
 	return axios.get(`${baseUrl}/connections`);
