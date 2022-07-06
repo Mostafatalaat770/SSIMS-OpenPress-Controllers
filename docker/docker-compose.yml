@@ -48,4 +48,5 @@ services:
       - GENESIS_URL=${GENESIS_URL}
     tty: true
 
+networks:
   aca:
